@@ -1,0 +1,19 @@
+.track-container{
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column; /* 讓子元素垂直排列 */
+    align-items: center;    /* 讓整個區塊水平置中 */
+    gap: 0.5rem;               /* 標籤和 input 之間的小間距 */
+    margin-bottom: 20px;
+}
+
+.h3-text{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
