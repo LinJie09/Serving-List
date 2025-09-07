@@ -25,6 +25,7 @@ function ServiceSchedule() {
     if (!form.date || !form.name || !form.task) return;
     setTasks([...tasks, { ...form, id: Date.now() }]);
     setForm({ date: "", name: "", task: "" });
+    setShowTable(true);
   };
 
   const deleteTask = (id) => {

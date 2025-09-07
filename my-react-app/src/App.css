@@ -9,7 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
   
   /* 淺藍 + 更飽和橘色水彩背景 */
   background-color: #ffffff; /* 底色 */
@@ -52,31 +51,31 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   cursor: pointer;
-  
+  background: rgba(5, 180, 239, 0.756);
+  color:#ffffff;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, rgba(5, 180, 239, 0.756), rgba(246, 146, 59, 0.861));
 }
 
 
-.form  {
+.form {
   display: flex;
   flex-direction: column; /* 表單垂直排列 */
   gap: 1rem;
   margin: 0 auto;
   
 }
-.form button {
-  background-color: rgba(255, 165, 0, 0.8);
-  color: white;
-  border-radius: 8px;
-  border: none;
-  padding: 0.5rem 1rem;
-}
 
-.form button:hover {
+
+.orange-btn:hover {
   background-color: rgba(255, 140, 0, 0.9);
 }
 
-/* 全局表單按鈕美化 */
-.form button {
+.orange-btn{
   background: linear-gradient(135deg, rgba(255,165,0,0.85), rgba(255,140,0,0.9));
   color: white;
   font-weight: bold;
@@ -90,7 +89,7 @@ body {
 }
 
 /* 懸停效果 */
-.form button:hover {
+.orange-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
   background: linear-gradient(135deg, rgba(255,140,0,0.95), rgba(255,120,0,1));
@@ -118,9 +117,7 @@ body {
 
 /* 表單輸入框統一風格 */
 .form input[type="text"],
-.form input[type="date"],
-.form input[type='number'] {
-  width: 10rem;
+.form input[type="date"] {
   padding: 0.5rem 1rem;
   border-radius: 12px;
   border: 1px solid rgba(0,0,0,0.2);
@@ -128,18 +125,21 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
+  align-items: center;
 }
 
+
 .form input[type="text"]:focus,
-.form input[type="date"]:focus,
-.form input[type='number']:focus  {
+.form input[type="date"]:focus{
   border-color: rgba(7,179,237,0.8);
   box-shadow: 0 4px 10px rgba(7,179,237,0.3);
   outline: none;
+  
 }
 
 /* 表單整體間距 */
 
+/* RWD 調整 */
 /* RWD 調整 */
  /* RWD */
  @media (min-width: 1000px) {

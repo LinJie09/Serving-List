@@ -9,6 +9,7 @@ function ExpenseTracker() {
 
   const [form, setForm] = useState({
     date: "",
+    type: "收入", // 預設收入
     category: "",
     amount: "",
     note: "",
@@ -23,7 +24,7 @@ function ExpenseTracker() {
     e.preventDefault();
     if (!form.date || !form.category || !form.amount) return;
     setExpenses([...expenses, { ...form, id: Date.now() }]);
-    setForm({ date: "", category: "", amount: "", note: "" });
+    setForm({ date: "", type: "支出", category: "", amount: "", note: "" });
   };
 
   const deleteExpense = (id) => {
@@ -35,8 +36,10 @@ function ExpenseTracker() {
     ? expenses.filter((exp) => exp.date.startsWith(monthFilter))
     : expenses;
 
+  // 總計（收入加總，支出扣除）
   const total = filteredExpenses.reduce(
-    (sum, exp) => sum + Number(exp.amount),
+    (sum, exp) =>
+      exp.type === "收入" ? sum + Number(exp.amount) : sum - Number(exp.amount),
     0
   );
 
@@ -51,10 +54,12 @@ function ExpenseTracker() {
       >
         <h2>記帳功能</h2>
       </div>
+
       <div className="track-container">
         <div className="filter">
           <label>選擇月份: </label>
           <input
+            className="filter-month"
             type="month"
             value={monthFilter}
             onChange={(e) => setMonthFilter(e.target.value)}
@@ -67,43 +72,93 @@ function ExpenseTracker() {
             value={form.date}
             onChange={(e) => setForm({ ...form, date: e.target.value })}
           />
+
+          {/* 收入 / 支出 */}
+          <select
+            className="select-btn"
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value })}
+          >
+            <option value="支出">支出</option>
+            <option value="收入">收入</option>
+          </select>
+
           <input
             type="text"
             placeholder="類別"
             value={form.category}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
           />
-          <input
+          {/* <input
             type="number"
             placeholder="金額"
             value={form.amount}
             onChange={(e) => setForm({ ...form, amount: e.target.value })}
-          />
+          /> */}
+          <div className="number-input">
+            <button
+              className="number-btn"
+              type="button"
+              onClick={() =>
+                setForm({
+                  ...form,
+                  amount: Math.max(Number(form.amount) - 1, 0), // 避免小於 0
+                })
+              }
+            >
+              ➖
+            </button>
+            <input
+              type="number"
+              placeholder="金額"
+              value={form.amount}
+              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            />
+            <button
+               className="number-btn"
+              type="button"
+              onClick={() =>
+                setForm({
+                  ...form,
+                  amount: Number(form.amount) + 1,
+                })
+              }
+            >
+              ➕
+            </button>
+          </div>
+
           <input
             type="text"
             placeholder="備註"
             value={form.note}
             onChange={(e) => setForm({ ...form, note: e.target.value })}
           />
-          <button type="submit">新增</button>
+          <button className="orange-btn" type="submit">新增</button>
         </form>
       </div>
 
       <div className="cards">
         {filteredExpenses.map((exp) => (
-          <div key={exp.id} className="card">
+          <div
+            key={exp.id}
+            className={`card ${exp.type === "收入" ? "income" : "expense"}`}
+          >
             <div>
               <strong>{exp.date}</strong>
             </div>
+            <div>種類: {exp.type}</div>
             <div>類別: {exp.category}</div>
-            <div>金額: ${exp.amount}</div>
+            <div className="amount">
+              {exp.type === "收入" ? "+" : "-"}${exp.amount}
+            </div>
             <div>備註: {exp.note}</div>
             <button onClick={() => deleteExpense(exp.id)}>刪除</button>
           </div>
         ))}
       </div>
+
       <h3 className="h3-text">總計: ${total}</h3>
-      
     </div>
   );
 }
