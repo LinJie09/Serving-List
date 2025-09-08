@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>我的管理工具</h1>
+      <h1>Ledger & Light</h1>
       <p>
         <a
           href="https://twilight-lute-6a9.notion.site/DJ-1a086409d6038079beb9f2de9469304f"
