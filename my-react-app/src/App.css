@@ -32,6 +32,19 @@ body {
   padding: 1rem;
 }
 
+.link-text{
+  text-decoration: none;       /* 取消底線 */
+  color: #0077cc;             /* 文字顏色 */
+  font-weight: bold;          /* 粗體 */
+  transition: color 0.3s
+}
+
+.link-text:hover {
+  color: #ff6600;             /* 滑鼠移上去變色 */
+  text-decoration: none; /* hover 時才出現底線 */
+}
+
+
 .btn-container{
   display: flex;
   align-items: center;
