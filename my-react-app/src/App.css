@@ -250,6 +250,12 @@ body {
       margin-left: auto;
       margin-right: auto; /* 表格置中 */
   }
+
+  .header-pic{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 /* 手機版 (max-width: 768px) */
@@ -264,6 +270,7 @@ body {
       width: 90%;
       max-width: 400px;
   }
+  
 }
 
 /* 更小手機 (max-width: 500px) */

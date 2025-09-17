@@ -9,7 +9,20 @@ function App() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Ledger & Light</h1>
+        <div className="header-pic">
+          <img
+            src="/Ledger & Light.png"
+            alt="Ledger & Light"
+            style={{
+              width: "50px", // 調整寬度
+              height: "auto", // 高度自動
+              borderRadius: "10px", // 圓角
+              boxShadow: "0 4px 8px rgba(0,0,0,0.2)", // 陰影
+            }}
+          />
+          <h1>Ledger & Light</h1>
+        </div>
+
         <p>
           <a
             href="https://twilight-lute-6a9.notion.site/DJ-1a086409d6038079beb9f2de9469304f"
@@ -38,5 +51,3 @@ function App() {
 }
 
 export default App;
-
-
