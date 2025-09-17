@@ -215,6 +215,13 @@
   outline: none;
 }
 
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+
   /* RWD */
   @media (max-width: 900px) {
     .form-buttons {

@@ -9,6 +9,9 @@ function ServiceSchedule() {
 
   const [form, setForm] = useState({ date: "", name: "", task: "" });
   const [showTable, setShowTable] = useState(false);
+  const [errorDate,setErrorDate] = useState('');
+  const [errorName,setErrorName] = useState('');
+  const [errorTask,setErrorTask] = useState('');
 
   // 排序設定
   const [sortConfig, setSortConfig] = useState({
@@ -22,7 +25,30 @@ function ServiceSchedule() {
 
   const addTask = (e) => {
     e.preventDefault();
-    if (!form.date || !form.name || !form.task) return;
+
+    let hasError = false;
+
+    if (!form.date){
+      setErrorDate("請點選日期");
+      hasError = true;
+    }else{
+      setErrorDate('');
+    }
+
+    if (!form.name){
+      setErrorName("請入姓名");
+      hasError = true;
+    }else{
+      setErrorName('');
+    }
+
+    if (!form.task){
+      setErrorTask("請入工作內容");
+      hasError = true;
+    }else{
+      setErrorTask('');
+    }
+    if (hasError) return;
     setTasks([...tasks, { ...form, id: Date.now() }]);
     setForm({ date: "", name: "", task: "" });
     setShowTable(true);
@@ -68,20 +94,32 @@ function ServiceSchedule() {
           <input
             type="date"
             value={form.date}
-            onChange={(e) => setForm({ ...form, date: e.target.value })}
+            onChange={(e) => {
+              setForm({ ...form, date: e.target.value });
+              if (e.target.value) setErrorDate('');
+            }}
           />
+          {errorDate && <div className="error">{errorDate}</div> }
           <input
             type="text"
             placeholder="姓名"
             value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            onChange={(e) => {
+              setForm({ ...form, name: e.target.value });
+              if(e.target.value) setErrorName('');
+            }}
           />
+          {errorName && <div className="error">{errorName}</div> }
           <input
             type="text"
             placeholder="工作內容"
             value={form.task}
-            onChange={(e) => setForm({ ...form, task: e.target.value })}
+            onChange={(e) => {
+              setForm({ ...form, task: e.target.value });
+              if(e.target.value) setErrorTask('');
+            }}
           />
+          {errorTask && <div className="error">{errorTask}</div> }
         </div>
         <div className="form-row">
           <button type="submit" className="btn-orange">
