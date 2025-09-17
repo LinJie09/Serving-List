@@ -120,6 +120,29 @@
     font-weight: bold;
 }
   
+/* 預設桌面不影響 */
+.input-error-mobile,
+.error-text-mobile {
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* 手機版才生效 */
+@media (max-width: 600px) {
+  .input-error-mobile {
+    border: 2px solid #f44336;
+    border-radius: 6px;
+  }
+
+  .error-text-mobile {
+    color: #f44336;
+    font-size: 12px;
+    margin: 2px 0 6px 0;
+  }
+}
 
 
 
