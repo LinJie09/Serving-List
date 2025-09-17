@@ -17,7 +17,14 @@ const ExpenseList = ({ filteredExpenses, deleteExpense }) => {
             {exp.type === "收入" ? "+" : "-"}${exp.amount}
           </div>
           <div>備註: {exp.note}</div>
-          <button onClick={() => deleteExpense(exp.id)}>刪除</button>
+          <div className="card-footer">
+            <button
+              className="delete-btn"
+              onClick={() => deleteExpense(exp.id)}
+            >
+              刪除
+            </button>
+          </div>
         </div>
       ))}
     </div>

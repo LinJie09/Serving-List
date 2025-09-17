@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExpenseList from "./Expense/ExpenseList";
 import DeleteModal from "./Expense/DeleteModal";
 
+
 import "./expenseTrackr.css";
 
 function ExpenseTracker() {
@@ -144,7 +145,7 @@ function ExpenseTracker() {
       </div>
 
       {/* 卡片列表 */}
-      <ExpenseList
+      <ExpenseList className="cards-warrper"
         filteredExpenses={filteredExpenses}
         deleteExpense={handleDeleteClick} // 點擊打開 Modal
       />

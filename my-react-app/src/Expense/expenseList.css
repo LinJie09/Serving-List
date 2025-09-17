@@ -1,0 +1,71 @@
+.cards-container {
+    max-height: 350px; /* 整體高度略微縮小 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 卡片寬度縮小 */
+    gap: 10px;
+  }
+  
+  .card {
+    border-radius: 10px;
+    padding: 10px; /* 卡片內間距縮小 */
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    font-size: 14px; /* 字體縮小 */
+  }
+  
+  .card.income {
+    border-left: 4px solid #4caf50;
+  }
+  
+  .card.expense {
+    border-left: 4px solid #f44336;
+  }
+  
+  .card .amount {
+    font-size: 16px; /* 文字略小 */
+    font-weight: bold;
+    margin-top: 4px;
+  }
+  
+  .card button {
+    margin-top: 6px;
+    padding: 6px; /* 按鈕縮小 */
+    font-size: 14px; /* 文字縮小 */
+    border-radius: 6px;
+  }
+
+  
+  @media (max-width: 600px) {
+    .cards-container {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-height: 50vh; /* 手機高度縮小 */
+    }
+  
+    .card {
+      padding: 12px;
+      font-size: 13px;
+    }
+  
+    .card .amount {
+      font-size: 15px;
+    }
+  
+    .card button {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+    @media (max-width: 600px) {
+        .delete-btn {
+          font-size: 13px;
+          padding: 6px 10px;
+          border-radius: 6px;
+        }
+    }
+      
+  }
