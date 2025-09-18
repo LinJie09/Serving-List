@@ -208,20 +208,16 @@ body {
 /* 表單整體間距 */
 
 /* RWD 調整 */
-/* RWD 調整 */
- /* RWD */
- @media (min-width: 1000px) {
-  .input-container {
-      flex-direction: row; /* 保持水平排列 */
-      justify-content: center;
-  }
-}
 
 /* 桌面 & 平板 (900px ~ 1000px) */
 @media (max-width: 1000px) {
   .form-row input {
       max-width: 200px;
   }
+  .input-container {
+    flex-direction: row; /* 保持水平排列 */
+    justify-content: center;
+}
 
   .form-buttons {
       flex-direction: row; /* 水平排列 */
@@ -256,6 +252,15 @@ body {
     align-items: center;
     gap: 10px;
   }
+  input[type="date"] {
+    color: #000; /* 黑色字 */
+    background-color: #fff; /* 白色背景 */
+  }
+
+  /* 當欄位有 placeholder (還沒選日期) */
+  input[type="date"]:invalid {
+    color: #aaa; /* 灰色文字當提示 */
+  }
 }
 
 /* 手機版 (max-width: 768px) */
@@ -270,6 +275,15 @@ body {
       width: 90%;
       max-width: 400px;
   }
+  input[type="date"] {
+    color: #000; /* 黑色字 */
+    background-color: #fff; /* 白色背景 */
+  }
+
+  /* 當欄位有 placeholder (還沒選日期) */
+  input[type="date"]:invalid {
+    color: #aaa; /* 灰色文字當提示 */
+  }
   
 }
 
@@ -278,6 +292,15 @@ body {
   .form-buttons button {
       width: 90%;
       max-width: 300px;
+  }
+  input[type="date"] {
+    color: #000; /* 黑色字 */
+    background-color: #fff; /* 白色背景 */
+  }
+
+  /* 當欄位有 placeholder (還沒選日期) */
+  input[type="date"]:invalid {
+    color: #aaa; /* 灰色文字當提示 */
   }
 }
 
@@ -295,5 +318,14 @@ body {
   .schedule-table td {
       font-size: 0.85rem;
       padding: 0.4rem 0.6rem;
+  }
+  input[type="date"] {
+    color: #000; /* 黑色字 */
+    background-color: #fff; /* 白色背景 */
+  }
+
+  /* 當欄位有 placeholder (還沒選日期) */
+  input[type="date"]:invalid {
+    color: #aaa; /* 灰色文字當提示 */
   }
 }
