@@ -260,7 +260,7 @@ body {
 
   /* 當欄位有 placeholder (還沒選日期) */
   input[type="date"]:invalid {
-    color: #aaa; /* 灰色文字當提示 */
+    color: #000; /* 灰色文字當提示 */
   }
 }
 
@@ -284,9 +284,32 @@ body {
 
   /* 當欄位有 placeholder (還沒選日期) */
   input[type="date"]:invalid {
-    color: #aaa; /* 灰色文字當提示 */
+    color: #000; /* 灰色文字當提示 */
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;        /* 滿版 */
+    width: 100%;
+    max-width: 900px;
+    padding: 1rem;
+    box-sizing: border-box;
   }
   
+  .header {
+    flex: 0 0 auto; /* 固定大小 */
+    text-align: center;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: scroll; /* 永遠顯示滾動條 */
+    scrollbar-gutter: stable; /* ✅ Chrome / Edge / Firefox 新版支援，保留空間 */
+    max-height: calc(100vh - 180px);
+    box-sizing: border-box;
+  }
 }
 
 /* 更小手機 (max-width: 500px) */
@@ -303,7 +326,7 @@ body {
 
   /* 當欄位有 placeholder (還沒選日期) */
   input[type="date"]:invalid {
-    color: #aaa; /* 灰色文字當提示 */
+    color: #000; /* 灰色文字當提示 */
   }
 }
 
@@ -330,6 +353,6 @@ body {
 
   /* 當欄位有 placeholder (還沒選日期) */
   input[type="date"]:invalid {
-    color: #aaa; /* 灰色文字當提示 */
+    color: #000; /* 灰色文字當提示 */
   }
 }
