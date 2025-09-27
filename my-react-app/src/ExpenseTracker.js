@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ExpenseList from "./Expense/ExpenseList";
 import DeleteModal from "./Expense/DeleteModal";
 
-
 import "./expenseTrackr.css";
 
 function ExpenseTracker() {
@@ -36,9 +35,24 @@ function ExpenseTracker() {
     e.preventDefault();
     let hasError = false;
 
-    if (!form.date) { setErrorDate("請點選日期"); hasError = true; } else { setErrorDate(""); }
-    if (!form.category) { setErrorCategory("請填寫類別"); hasError = true; } else { setErrorCategory(""); }
-    if (!form.amount) { setErrorAmount("請填寫金額"); hasError = true; } else { setErrorAmount(""); }
+    if (!form.date) {
+      setErrorDate("請點選日期");
+      hasError = true;
+    } else {
+      setErrorDate("");
+    }
+    if (!form.category) {
+      setErrorCategory("請填寫類別");
+      hasError = true;
+    } else {
+      setErrorCategory("");
+    }
+    if (!form.amount) {
+      setErrorAmount("請填寫金額");
+      hasError = true;
+    } else {
+      setErrorAmount("");
+    }
 
     if (hasError) return;
 
@@ -89,12 +103,17 @@ function ExpenseTracker() {
         </div>
 
         <form onSubmit={addExpense} className="form">
-          <input
-            type="date"
+          <DateInput
             value={form.date}
-            onChange={(e) => { setForm({ ...form, date: e.target.value }); setErrorDate(""); }}
+            onChange={(val) => {
+              setForm({ ...form, date: val });
+              setErrorDate("");
+            }}
+            error={errorDate}
           />
-          {errorDate && <p style={{ color: "red", margin: "2px 0" }}>{errorDate}</p>}
+          {errorDate && (
+            <p style={{ color: "red", margin: "2px 0" }}>{errorDate}</p>
+          )}
 
           <select
             className="select-btn"
@@ -109,29 +128,50 @@ function ExpenseTracker() {
             type="text"
             placeholder="類別"
             value={form.category}
-            onChange={(e) => { setForm({ ...form, category: e.target.value }); setErrorCategory(""); }}
+            onChange={(e) => {
+              setForm({ ...form, category: e.target.value });
+              setErrorCategory("");
+            }}
           />
-          {errorCategory && <p style={{ color: "red", margin: "2px 0" }}>{errorCategory}</p>}
+          {errorCategory && (
+            <p style={{ color: "red", margin: "2px 0" }}>{errorCategory}</p>
+          )}
 
           <div className="number-input">
             <button
               className="number-btn"
               type="button"
-              onClick={() => setForm({ ...form, amount: Math.max(Number(form.amount)-1,0) })}
-            >➖</button>
+              onClick={() =>
+                setForm({
+                  ...form,
+                  amount: Math.max(Number(form.amount) - 1, 0),
+                })
+              }
+            >
+              ➖
+            </button>
             <input
               type="number"
               placeholder="金額"
               value={form.amount}
-              onChange={(e) => { setForm({ ...form, amount: e.target.value }); setErrorAmount(""); }}
+              onChange={(e) => {
+                setForm({ ...form, amount: e.target.value });
+                setErrorAmount("");
+              }}
             />
             <button
               className="number-btn"
               type="button"
-              onClick={() => setForm({ ...form, amount: Number(form.amount)+1 })}
-            >➕</button>
+              onClick={() =>
+                setForm({ ...form, amount: Number(form.amount) + 1 })
+              }
+            >
+              ➕
+            </button>
           </div>
-          {errorAmount && <p style={{ color: "red", margin: "2px 0" }}>{errorAmount}</p>}
+          {errorAmount && (
+            <p style={{ color: "red", margin: "2px 0" }}>{errorAmount}</p>
+          )}
 
           <input
             type="text"
@@ -140,12 +180,15 @@ function ExpenseTracker() {
             onChange={(e) => setForm({ ...form, note: e.target.value })}
           />
 
-          <button className="orange-btn" type="submit">新增</button>
+          <button className="orange-btn" type="submit">
+            新增
+          </button>
         </form>
       </div>
 
       {/* 卡片列表 */}
-      <ExpenseList className="cards-warrper"
+      <ExpenseList
+        className="cards-warrper"
         filteredExpenses={filteredExpenses}
         deleteExpense={handleDeleteClick} // 點擊打開 Modal
       />
