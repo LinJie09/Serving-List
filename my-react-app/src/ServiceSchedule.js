@@ -9,9 +9,9 @@ function ServiceSchedule() {
 
   const [form, setForm] = useState({ date: "", name: "", task: "" });
   const [showTable, setShowTable] = useState(false);
-  const [errorDate,setErrorDate] = useState('');
-  const [errorName,setErrorName] = useState('');
-  const [errorTask,setErrorTask] = useState('');
+  const [errorDate, setErrorDate] = useState("");
+  const [errorName, setErrorName] = useState("");
+  const [errorTask, setErrorTask] = useState("");
 
   // 排序設定
   const [sortConfig, setSortConfig] = useState({
@@ -19,39 +19,43 @@ function ServiceSchedule() {
     direction: "asc",
   });
 
+  // 儲存到 localStorage
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
+  // 新增任務（有驗證）
   const addTask = (e) => {
     e.preventDefault();
 
     let hasError = false;
 
-    if (!form.date){
+    if (!form.date) {
       setErrorDate("請點選日期");
       hasError = true;
-    }else{
-      setErrorDate('');
+    } else {
+      setErrorDate("");
     }
 
-    if (!form.name){
+    if (!form.name) {
       setErrorName("請入姓名");
       hasError = true;
-    }else{
-      setErrorName('');
+    } else {
+      setErrorName("");
     }
 
-    if (!form.task){
+    if (!form.task) {
       setErrorTask("請入工作內容");
       hasError = true;
-    }else{
-      setErrorTask('');
+    } else {
+      setErrorTask("");
     }
+
     if (hasError) return;
+
     setTasks([...tasks, { ...form, id: Date.now() }]);
     setForm({ date: "", name: "", task: "" });
-    setShowTable(true);
+    setShowTable(true); // 自動顯示表格
   };
 
   const deleteTask = (id) => {
@@ -63,7 +67,6 @@ function ServiceSchedule() {
     let aValue = a[sortConfig.key];
     let bValue = b[sortConfig.key];
 
-    // 如果排序欄位是日期，轉成 Date 比較
     if (sortConfig.key === "date") {
       aValue = new Date(aValue);
       bValue = new Date(bValue);
@@ -96,36 +99,40 @@ function ServiceSchedule() {
             value={form.date}
             onChange={(e) => {
               setForm({ ...form, date: e.target.value });
-              if (e.target.value) setErrorDate('');
+              if (e.target.value) setErrorDate("");
             }}
           />
-          {errorDate && <div className="error">{errorDate}</div> }
+          {errorDate && <div className="error">{errorDate}</div>}
+
           <input
             type="text"
             placeholder="姓名"
             value={form.name}
             onChange={(e) => {
               setForm({ ...form, name: e.target.value });
-              if(e.target.value) setErrorName('');
+              if (e.target.value) setErrorName("");
             }}
           />
-          {errorName && <div className="error">{errorName}</div> }
+          {errorName && <div className="error">{errorName}</div>}
+
           <input
             type="text"
             placeholder="工作內容"
             value={form.task}
             onChange={(e) => {
               setForm({ ...form, task: e.target.value });
-              if(e.target.value) setErrorTask('');
+              if (e.target.value) setErrorTask("");
             }}
           />
-          {errorTask && <div className="error">{errorTask}</div> }
+          {errorTask && <div className="error">{errorTask}</div>}
         </div>
+
         <div className="form-row">
           <button type="submit" className="btn-orange">
             新增任務
           </button>
           <button
+            type="button"
             onClick={() => setShowTable(!showTable)}
             className="btn-orange"
           >
@@ -135,47 +142,48 @@ function ServiceSchedule() {
       </form>
 
       {showTable && (
-        <table className="schedule-table">
-          <thead>
-            <tr>
-              <th onClick={() => requestSort("date")}>
-                日期
-                <span>
-                  {sortConfig.key === "date"
-                    ? sortConfig.direction === "asc"
-                      ? "▲"
-                      : "▼"
-                    : ""}
-                </span>
-              </th>
-              <th onClick={() => requestSort("name")}>
-                姓名
-                <span>
-                  {sortConfig.key === "name"
-                    ? sortConfig.direction === "asc"
-                      ? "▲"
-                      : "▼"
-                    : ""}
-                </span>
-              </th>
-
-              <th>工作內容</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedTasks.map((task) => (
-              <tr key={task.id}>
-                <td>{task.date}</td>
-                <td>{task.name}</td>
-                <td>{task.task}</td>
-                <td>
-                  <button onClick={() => deleteTask(task.id)}>刪除</button>
-                </td>
+        <div className="table-container">
+          <table className="schedule-table">
+            <thead>
+              <tr>
+                <th onClick={() => requestSort("date")}>
+                  日期
+                  <span>
+                    {sortConfig.key === "date"
+                      ? sortConfig.direction === "asc"
+                        ? "▲"
+                        : "▼"
+                      : ""}
+                  </span>
+                </th>
+                <th onClick={() => requestSort("name")}>
+                  姓名
+                  <span>
+                    {sortConfig.key === "name"
+                      ? sortConfig.direction === "asc"
+                        ? "▲"
+                        : "▼"
+                      : ""}
+                  </span>
+                </th>
+                <th>工作內容</th>
+                <th>操作</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sortedTasks.map((task) => (
+                <tr key={task.id}>
+                  <td>{task.date}</td>
+                  <td>{task.name}</td>
+                  <td>{task.task}</td>
+                  <td>
+                    <button onClick={() => deleteTask(task.id)}>刪除</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

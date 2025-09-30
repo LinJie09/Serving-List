@@ -1,218 +1,138 @@
-表格樣式
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: rgba(255,255,255,0.95);
-    background-color: rgba(255, 255, 255, 0.95); /* 半透明，突出文字 */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    border-radius: 8px;
+/* ==================== 基礎樣式（桌面版） ==================== */
+
+.table-container {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
 }
-  
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
 .schedule-table th,
 .schedule-table td {
-    padding: 0.6rem 0.8rem;
-    text-align: left;
+  padding: 8px 12px;
+  text-align: center;
+  vertical-align: middle;
 }
-  
+
 .schedule-table thead {
-    background-color: #1976d2;
-    color: white;
-    font-weight: bold;
-    font-size: 0.95rem;
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
 }
-  
+
 .schedule-table th {
-    cursor: pointer;
-    user-select: none;
-    position: relative;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
-  
+
 .schedule-table th::after {
-    content: '';
-    position: absolute;
-    right: 8px;
+  content: "";
+  position: absolute;
+  right: 8px;
 }
-  
+
 .schedule-table tbody tr:nth-child(even) {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
-  
+
 .schedule-table tbody tr:hover {
-    background-color: #e3f2fd;
+  background-color: #e3f2fd;
 }
-  
-  .schedule-table td {
-    font-size: 0.9rem;
-  }
-  
-  /* 刪除按鈕 */
-  .schedule-table button {
-    background-color: #e53935;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .schedule-table button:hover {
-    background-color: #c62828;
-  }
-  
-  /* 排序箭頭 */
-  .schedule-table th span {
-    margin-left: 4px;
-    font-size: 0.75rem;
-  }
 
-.input-container{
-    display: flex;
-    justify-content: space-around; /* 在每個按鈕的左右兩側創造相等的空間 */
-    width: 100%;
-    gap: 0.3rem;
+.schedule-table td {
+  font-size: 0.9rem;
 }
- /* 表單欄位容器 flex */
- .form-row {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap; /* 縮小時換行 */
-    justify-content: center;
+
+.schedule-table button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
-  
-  /* 每個輸入框 */
-  .form-row input {
-    flex: 1 1 150px; /* 自動伸縮，最小 150px */
-    max-width: 250px;
-    padding: 0.5rem 0.8rem;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.2);
-    font-size: 0.9rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-  
-  /* 聚焦效果 */
-  .form-row input:focus {
-    border-color: #1976d2;
-    box-shadow: 0 2px 6px rgba(25,118,210,0.3);
-    outline: none;
-  }
 
-  /* 表格樣式 */
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: rgba(255,255,255,0.95);
-    background-color: rgba(255, 255, 255, 0.95); /* 半透明，突出文字 */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    border-radius: 8px;
-  }
-  
-  
-  .schedule-table th,
-  .schedule-table td {
-    padding: 0.6rem 0.8rem;
-    text-align: left;
-  }
-  
-  .schedule-table thead {
-    background-color: #1976d2;
-    color: white;
-    font-weight: bold;
-    font-size: 0.95rem;
-  }
-  
-  .schedule-table th {
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-  }
-  
-  .schedule-table th::after {
-    content: '';
-    position: absolute;
-    right: 8px;
-  }
-  
-  .schedule-table tbody tr:nth-child(even) {
-    background-color: #f5f5f5;
-  }
-  
-  .schedule-table tbody tr:hover {
-    background-color: #e3f2fd;
-  }
-  
-  .schedule-table td {
-    font-size: 0.9rem;
-  }
-  
-  /* 刪除按鈕 */
-  .schedule-table button {
-    background-color: #e53935;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .schedule-table button:hover {
-    background-color: #c62828;
-  }
-  
-  /* 排序箭頭 */
-  .schedule-table th span {
-    margin-left: 4px;
-    font-size: 0.75rem;
-  }
- /* 表單欄位容器 flex */
+.schedule-table button:hover {
+  background-color: #c62828;
+}
 
- 
-  
-  /* 每個輸入框 */
-  .form-row input {
-    flex: 1 1 150px; /* 自動伸縮，最小 150px */
-    max-width: 200px;
-    padding: 0.5rem 0.8rem;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.2);
-    font-size: 0.9rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
+.schedule-table th span {
+  margin-left: 4px;
+  font-size: 0.75rem;
+}
 
-.form-row button{
-  background: linear-gradient(135deg, rgba(255,165,0,0.85), rgba(255,140,0,0.9));
+.input-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap: 0.3rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-row input {
+  flex: 1 1 150px;
+  max-width: 250px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-row input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+  outline: none;
+}
+
+.form-row button {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 165, 0, 0.85),
+    rgba(255, 140, 0, 0.9)
+  );
   color: white;
   font-weight: bold;
   border-radius: 12px;
   border: none;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   font-size: 1rem;
 }
 
 .form-row button:hover {
-  background-color: rgba(255, 140, 0, 0.9);
-}
-
-  /* 聚焦效果 */
-.form-row input:focus {
-  border-color: #1976d2;
-  box-shadow: 0 2px 6px rgba(25,118,210,0.3);
-  outline: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 140, 0, 0.9),
+    rgba(255, 120, 0, 0.95)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .error {
@@ -221,48 +141,135 @@
   margin-top: 2px;
 }
 
-
-  /* RWD */
-  @media (max-width: 900px) {
-    .form-buttons {
-      flex-direction: column; /* 上下堆疊 */
-      align-items: center;    /* 置中 */
-    }
-  
-    .form-buttons button {
-      width: 80%;
-      max-width: 300px;
-    }
-  }
-  
-  /* 手機版 RWD (小於 600px) */
-  @media (max-width: 600px) {
-    .form-buttons {
-      flex-direction: column; /* 上下堆疊 */
-      align-items: center;    /* 置中 */
-    }
-  
-    .form-buttons button {
-      width: 90%;
-      max-width: 300px;
-    }
-  }
-  @media (max-width: 800px) {
-  .form-buttons {
-    flex-direction: column; /* 上下堆疊 */
-    align-items: center;    /* 置中 */
+/* ==================== 平板尺寸 (768px 以下) ==================== */
+@media (max-width: 768px) {
+  .table-container {
+    max-height: 400px;
+    margin-top: 0.8rem;
+    border-radius: 6px;
   }
 
-  .form-buttons button {
-    width: 80%;
-    max-width: 300px;
+  .schedule-table {
+    margin-top: 0.8rem;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .schedule-table thead {
+    font-size: 0.9rem;
+  }
+
+  .schedule-table button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .form-row {
+    gap: 0.6rem;
+  }
+
+  .form-row input {
+    max-width: 180px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .form-row button {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .input-container {
+    gap: 0.5rem;
   }
 }
 
-/* 更窄視窗下 */
-@media (max-width: 500px) {
-  .form-buttons button {
-    width: 90%;
-    max-width: 300px;
+/* ==================== 手機尺寸 (480px 以下) ==================== */
+@media (max-width: 480px) {
+  .table-container {
+    max-height: 300px;
+    margin-top: 0.6rem;
+    border-radius: 4px;
+  }
+
+  .schedule-table {
+    margin-top: 0.6rem;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+
+  .schedule-table thead {
+    font-size: 0.85rem;
+  }
+
+  .schedule-table th span {
+    margin-left: 2px;
+    font-size: 0.7rem;
+  }
+
+  .schedule-table button {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .form-row input {
+    max-width: 100%;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .form-row button {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .error {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==================== 極小螢幕 (360px 以下) ==================== */
+@media (max-width: 360px) {
+  .table-container {
+    max-height: 250px;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+  }
+
+  .schedule-table thead {
+    font-size: 0.8rem;
+  }
+
+  .form-row input {
+    font-size: 0.85rem;
+  }
+
+  .form-row button {
+    font-size: 0.95rem;
   }
 }
